@@ -1,9 +1,11 @@
-from .apps import IamheadlessPublisherAdminRedirectsConfig
+from django.conf import settings as dj_settings
+
+from .apps import IamheadlessPublisherAdminRedirectsConfig as AppConfig
 
 
 class Settings:
 
-    APP_NAME = IamheadlessPublisherAdminRedirectsConfig.name
+    APP_NAME = AppConfig.name
     ITEM_TYPE = 'redirect'
 
     def __getattr__(self, name):
