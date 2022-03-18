@@ -33,6 +33,22 @@ class RedirectPydanticModel(BaseItemPydanticModel):
         data = self.dict()
         return data['data']['source_url']
 
+    @property
+    def EDIT_URL(self):
+
+        _data = self.DATA
+
+        project_id = _data.get('project', None)
+        item_id = _data.get('id', None)
+
+        return reverse(
+            settings.URLNAME_RETRIEVE_UPDATE_ITEM,
+            kwargs={
+                'project_id': project_id,
+                'item_id': item_id
+            }
+        )
+
     @classmethod
     def get_item_type(cls, data):
         return data['item_type']
