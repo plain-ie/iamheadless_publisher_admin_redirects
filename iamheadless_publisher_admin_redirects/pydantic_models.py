@@ -49,6 +49,16 @@ class RedirectPydanticModel(BaseItemPydanticModel):
             }
         )
 
+    #
+
+    @classmethod
+    def viewsets(cls):
+        return [
+            f'{settings.APP_NAME}.viewsets.RedirectCreateViewSet',
+            f'{settings.APP_NAME}.viewsets.RedirectDeleteViewSet',
+            f'{settings.APP_NAME}.viewsets.RedirectRetrieveUpdateViewSet',
+        ]
+
     @classmethod
     def get_item_type(cls, data):
         return data['item_type']
